@@ -6,12 +6,13 @@ import com.google.common.base.Optional;
 
 import httpextractor.*;
 import httpextractor.domain.Email;
+import httpextractor.extractors.Validity;
 import httpextractor.handlers.RequestHandler;
 
 public class LoginHandler implements RequestHandler {
 
 	public Response handle(Request req) {
-		Optional<Email> email = emailParam("email", req); 
+		Validity<Email> email = emailParam("email", req); 
 		String emailStr = (email.isPresent()) ? email.get().toString() : "";
 		return new HtmlResponse(
 				"<html><head></head>" +

@@ -1,12 +1,11 @@
 package httpextractor.extractors;
 
 import com.google.common.base.Function;
-import com.google.common.base.Optional;
 
 import httpextractor.Request;
 import httpextractor.domain.Email;
 
-public class EmailExtractor implements RequestExtractor<Email> {
+public class EmailExtractor implements RequestValidityExtractor<Email> {
 
 	private String parameterName;
 
@@ -14,14 +13,19 @@ public class EmailExtractor implements RequestExtractor<Email> {
 		this.parameterName = parameterName;
 	}
 
-	public Optional<Email> extract(Request req) {
+	@SuppressWarnings("unchecked")
+	public Validity<Email> extract(Request req) {
 		Optional<String> value = RequestExtractors.param(parameterName, req);
-		return value.transform(
-				new Function<String, Email>() {
-					public Email apply(String emailString) {
-						return new Email(emailString);
-					}
-				});
+		
+		if (!value.isPresent()) return (Validity<Email>) ValidityFactory.<Email>absent();
+		
+		if (isValid(value.get())) return new Valid<Email>(new Email(value.get()));
+		
+		return new Invalid<Email>(value.get());
+	}
+
+	public Boolean isValid(String value) {
+		return true;
 	}
 
 }

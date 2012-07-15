@@ -1,10 +1,9 @@
 package httpextractor;
 
+import httpextractor.extractors.Optional;
 import httpextractor.extractors.RequestExtractor;
 
 import javax.servlet.http.HttpServletRequest;
-
-import com.google.common.base.Optional;
 
 import matchers.RequestMatcher;
 

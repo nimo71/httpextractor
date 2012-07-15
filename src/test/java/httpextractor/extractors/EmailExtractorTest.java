@@ -25,19 +25,18 @@ public class EmailExtractorTest {
 	}
 	
 	@Test
-	public void shouldExtractAPresentEmailObjectFromARequestParameter() {
-		when(req.param(eq(PARAMETER_NAME))).thenReturn(VALID_EMAIL_ADDRESS);
-		
-		Optional<Email> email = RequestExtractors.emailParam(PARAMETER_NAME, req);
-		assertThat(email.get().toString(), equalTo("name@domain.com"));
-	}
-	
-	@Test
 	public void shouldExtractAbsentIfTheEmailDoesNotExist() {
 		when(req.param(eq(PARAMETER_NAME))).thenReturn(null);
 
-		Optional<Email> email = RequestExtractors.emailParam(PARAMETER_NAME, req);
+		Validity<Email> email = RequestExtractors.emailParam(PARAMETER_NAME, req);
 		assertThat(email.isPresent(), not(true));
 	}
 
+	@Test
+	public void shouldExtractValidIfTheEmailIsValid() {
+		when(req.param(eq(PARAMETER_NAME))).thenReturn(VALID_EMAIL_ADDRESS);
+		
+		Validity<Email> email = RequestExtractors.emailParam(PARAMETER_NAME, req);
+		assertThat(email.get().toString(), equalTo("name@domain.com"));
+	}
 }

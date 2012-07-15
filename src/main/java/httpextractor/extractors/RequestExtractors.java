@@ -1,7 +1,5 @@
 package httpextractor.extractors;
 
-import com.google.common.base.Optional;
-
 import httpextractor.Request;
 import httpextractor.domain.Email;
 
@@ -12,8 +10,8 @@ public class RequestExtractors {
 		return stringExtractor.extract(request);
 	}
 	
-	public static Optional<Email> emailParam(final String name, final Request request) {
-		RequestExtractor<Email> emailExtractor = new EmailExtractor(name);
+	public static Validity<Email> emailParam(final String name, final Request request) {
+		RequestValidityExtractor<Email> emailExtractor = new EmailExtractor(name);
 		return emailExtractor.extract(request);
 	}
 }
