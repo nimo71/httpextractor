@@ -4,6 +4,8 @@ import httpextractor.extractors.RequestExtractor;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.common.base.Optional;
+
 import matchers.RequestMatcher;
 
 public class Request {
@@ -20,7 +22,7 @@ public class Request {
 		return true;
 	}
 	
-	public <T> T extract(RequestExtractor<T> extractor) {
+	public <T> Optional<T> extract(RequestExtractor<T> extractor) {
 		return extractor.extract(this);
 	}
 
