@@ -1,8 +1,8 @@
 package httpextractor.routes;
 
-import com.google.common.base.Optional;
 
 import httpextractor.Request;
+import httpextractor.extractors.result.Optional;
 import httpextractor.handlers.RequestHandler;
 import httpextractor.matchers.RequestMatcher;
 

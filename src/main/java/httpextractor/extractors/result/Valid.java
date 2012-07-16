@@ -21,4 +21,8 @@ public class Valid<T> implements Validity<T> {
 		return true;
 	}
 
+	public String getInvalid() {
+		throw new IllegalStateException("Valid values are not invalid");
+	}
+
 }

@@ -1,14 +1,11 @@
 package httpextractor.routes;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.common.base.Optional;
-
 import httpextractor.Request;
+import httpextractor.extractors.result.*;
 import httpextractor.handlers.RequestHandler;
 import httpextractor.matchers.RequestMatcher;
-import httpextractor.routes.*;
+
+import java.util.*;
 
 public class HttpRequestRouter implements Router {
 
@@ -25,9 +22,9 @@ public class HttpRequestRouter implements Router {
 	
 	public Optional<RequestHandler> route(Request req) {
 		for (Route route : routes) {
-			if (route.match(req)) return Optional.of(route.handler());
+			if (route.match(req)) return ResultFactory.present(route.handler());
 		}
-		return Optional.<RequestHandler>absent();
+		return ResultFactory.<RequestHandler>absent();
 	}
 
 }

@@ -2,8 +2,7 @@ package httpextractor.extractors;
 
 import httpextractor.Request;
 import httpextractor.domain.Email;
-import httpextractor.extractors.result.Optional;
-import httpextractor.extractors.result.Validity;
+import httpextractor.extractors.result.*;
 
 public class RequestExtractors {
 	

@@ -1,7 +1,6 @@
 package app;
 
 import static httpextractor.matchers.RequestMatchers.*;
-
 import httpextractor.handlers.RequestHandler;
 import httpextractor.routes.*;
 

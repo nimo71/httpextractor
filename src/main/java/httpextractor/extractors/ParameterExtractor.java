@@ -1,8 +1,7 @@
 package httpextractor.extractors;
 
 import httpextractor.Request;
-import httpextractor.extractors.result.Optional;
-import httpextractor.extractors.result.OptionalFactory;
+import httpextractor.extractors.result.*;
 
 public class ParameterExtractor implements RequestExtractor<String> {
 	private final String name;
@@ -13,6 +12,6 @@ public class ParameterExtractor implements RequestExtractor<String> {
 
 	public Optional<String> extract(Request req) {
 		String value = req.param(name);
-		return OptionalFactory.fromNullable(value);
+		return ResultFactory.fromNullable(value);
 	}
 }

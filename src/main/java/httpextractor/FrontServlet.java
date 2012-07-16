@@ -1,20 +1,15 @@
 package httpextractor;
 
+import httpextractor.extractors.result.Optional;
 import httpextractor.handlers.RequestHandler;
-import httpextractor.routes.RouteFactory;
-import httpextractor.routes.Router;
+import httpextractor.routes.*;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.google.common.base.Optional;
+import org.apache.commons.logging.*;
 
 public class FrontServlet extends HttpServlet 
 {

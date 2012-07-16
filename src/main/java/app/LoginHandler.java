@@ -1,9 +1,6 @@
 package app;
 
-import static httpextractor.extractors.RequestExtractors.*;
-
-import com.google.common.base.Optional;
-
+import static httpextractor.extractors.RequestExtractors.emailParam;
 import httpextractor.*;
 import httpextractor.domain.Email;
 import httpextractor.extractors.result.Validity;

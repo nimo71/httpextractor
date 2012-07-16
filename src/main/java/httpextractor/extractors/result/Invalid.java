@@ -2,11 +2,11 @@ package httpextractor.extractors.result;
 
 
 public class Invalid<T> implements Validity<T> {
-
-	public String errorValue;
 	
-	public Invalid(String errorValue) {
-		this.errorValue = errorValue;
+	private final String invalidValue;
+
+	public Invalid(String invalidValue) {
+		this.invalidValue = invalidValue;
 	}
 
 	public boolean isPresent() {
@@ -22,7 +22,6 @@ public class Invalid<T> implements Validity<T> {
 	}
 	
 	public String getInvalid() {
-		return errorValue;
+		return this.invalidValue;
 	}
-
 }

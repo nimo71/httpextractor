@@ -1,36 +1,27 @@
 package httpextractor.extractors;
 
-import com.google.common.base.Function;
-
-import httpextractor.Request;
 import httpextractor.domain.Email;
-import httpextractor.extractors.result.Invalid;
-import httpextractor.extractors.result.Optional;
-import httpextractor.extractors.result.Valid;
-import httpextractor.extractors.result.Validity;
-import httpextractor.extractors.result.ValidityFactory;
 
-public class EmailExtractor implements RequestValidityExtractor<Email> {
+import java.util.regex.*;
 
-	private String parameterName;
+public class EmailExtractor extends Extractor<Email> implements RequestValidityExtractor<Email> {
+	
+	private static final String EMAIL_REGEX = ".+@.+\\.[a-z]+";
 
 	public EmailExtractor(String parameterName) {
-		this.parameterName = parameterName;
+		super(parameterName);
 	}
 
-	@SuppressWarnings("unchecked")
-	public Validity<Email> extract(Request req) {
-		Optional<String> value = RequestExtractors.param(parameterName, req);
-		
-		if (!value.isPresent()) return (Validity<Email>) ValidityFactory.<Email>absent();
-		
-		if (isValid(value.get())) return new Valid<Email>(new Email(value.get()));
-		
-		return new Invalid<Email>(value.get());
+	@Override
+	public Email parse(String value) {
+		return new Email(value);
 	}
 
+	@Override
 	public Boolean isValid(String value) {
-		return true;
+		Pattern p = Pattern.compile(EMAIL_REGEX);
+		Matcher m = p.matcher(value);
+		return m.matches();
 	}
 
 }

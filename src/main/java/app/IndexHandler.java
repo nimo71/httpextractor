@@ -1,8 +1,6 @@
 package app;
 
-import httpextractor.HtmlResponse;
-import httpextractor.Request;
-import httpextractor.Response;
+import httpextractor.*;
 import httpextractor.handlers.RequestHandler;
 
 public class IndexHandler implements RequestHandler {

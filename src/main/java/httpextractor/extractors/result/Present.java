@@ -1,10 +1,6 @@
-package httpextractor.extractors;
+package httpextractor.extractors.result;
 
 
-import httpextractor.extractors.result.Optional;
-import httpextractor.extractors.result.OptionalFactory;
-
-import com.google.common.base.Function;
 
 public class Present<T> implements Optional<T> {
 	private final T value; 
@@ -12,11 +8,6 @@ public class Present<T> implements Optional<T> {
 	public Present(T value) {
 		if (value == null) throw new IllegalStateException("Present cannot have null value");
 		this.value = value;
-	}
-
-	public <V> Optional<V> transform(Function<? super T, V> function) {
-		V transformed = function.apply(value);
-		return OptionalFactory.fromNullable(transformed);
 	}
 
 	public boolean isPresent() {

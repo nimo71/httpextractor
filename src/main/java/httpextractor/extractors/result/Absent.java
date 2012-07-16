@@ -1,19 +1,11 @@
-package httpextractor.extractors;
+package httpextractor.extractors.result;
 
-import httpextractor.extractors.result.Optional;
-import httpextractor.extractors.result.Validity;
-
-import com.google.common.base.Function;
 
 public class Absent implements Optional<Object>, Validity<Object> {
 
 	public static final Optional<Object> INSTANCE = new Absent();
 
 	private Absent() {}
-	
-	public <V> Optional<V> transform(Function<? super Object, V> function) {
-		throw new IllegalStateException("Cannot transform an absent object");
-	}
 
 	public boolean isPresent() {
 		return false;
@@ -25,6 +17,10 @@ public class Absent implements Optional<Object>, Validity<Object> {
 
 	public boolean isValid() {
 		return false;
+	}
+
+	public String getInvalid() {
+		throw new IllegalStateException("An absent object has no validity");
 	}
 
 }

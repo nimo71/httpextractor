@@ -5,9 +5,9 @@ import static org.hamcrest.Matchers.*;
 
 import java.io.IOException;
 
-import org.junit.Test;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.fluent.Request;;
+import org.apache.http.client.fluent.Request;
+import org.junit.Test;
 
 public class IndexPageIT {
 
