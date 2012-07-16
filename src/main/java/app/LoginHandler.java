@@ -8,22 +8,21 @@ import httpextractor.handlers.RequestHandler;
 
 public class LoginHandler implements RequestHandler {
 
+	@Override
 	public Response handle(Request req) {
 		Validity<Email> email = emailParam("email", req); 
-		String emailStr = (email.isPresent()) ? email.get().toString() : "";
-		return new HtmlResponse(
-				"<html><head></head>" +
-						"<body>" +
-							"<h1>Index</h1>" +
-							"<form action=\"\\login\" method=\"post\">" +
-								"<label>Email:</label>" +
-								"<input type=\"text\" name=\"email\" value=\"" + emailStr + "\"/>" +
-								"<label>Password:</label>" +
-								"<input type=\"password\" name=\"password\"/>" +
-								"<input type=\"submit\" value=\"Login\"/>" +
-							"</form>" +
-						"</body>" +
-				"</html>");
+		String emailStr = getEmail(email);
+		return new HtmlResponse(IndexHandler.indexHtml(emailStr));
+	}
+
+	private String getEmail(Validity<Email> email) {
+		if (email.isPresent()) {
+			if (email.isValid()) 
+				return email.get().toString();
+			else 
+				return email.getInvalid();
+		}
+		return "";
 	}
 
 }
