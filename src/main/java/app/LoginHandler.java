@@ -6,7 +6,7 @@ import com.google.common.base.Optional;
 
 import httpextractor.*;
 import httpextractor.domain.Email;
-import httpextractor.extractors.Validity;
+import httpextractor.extractors.result.Validity;
 import httpextractor.handlers.RequestHandler;
 
 public class LoginHandler implements RequestHandler {

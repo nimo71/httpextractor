@@ -1,6 +1,9 @@
 package httpextractor.extractors;
 
 
+import httpextractor.extractors.result.Optional;
+import httpextractor.extractors.result.OptionalFactory;
+
 import com.google.common.base.Function;
 
 public class Present<T> implements Optional<T> {

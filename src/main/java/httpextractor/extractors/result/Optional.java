@@ -1,4 +1,4 @@
-package httpextractor.extractors;
+package httpextractor.extractors.result;
 
 
 

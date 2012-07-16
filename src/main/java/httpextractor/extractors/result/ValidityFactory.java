@@ -1,4 +1,6 @@
-package httpextractor.extractors;
+package httpextractor.extractors.result;
+
+import httpextractor.extractors.Absent;
 
 public class ValidityFactory {
 

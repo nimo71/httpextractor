@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 
 import httpextractor.*;
 import httpextractor.domain.Email;
+import httpextractor.extractors.result.Validity;
 
 import org.junit.*;
 import org.mockito.*;

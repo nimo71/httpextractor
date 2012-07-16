@@ -1,4 +1,4 @@
-package httpextractor.extractors;
+package httpextractor.extractors.result;
 
 
 public interface Validity<T> extends Optional<T> {

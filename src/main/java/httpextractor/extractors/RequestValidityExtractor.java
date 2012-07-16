@@ -1,6 +1,7 @@
 package httpextractor.extractors;
 
 import httpextractor.Request;
+import httpextractor.extractors.result.Validity;
 
 public interface RequestValidityExtractor<T> {
 

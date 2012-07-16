@@ -1,4 +1,4 @@
-package httpextractor.extractors;
+package httpextractor.extractors.result;
 
 
 public class Invalid<T> implements Validity<T> {
@@ -21,7 +21,7 @@ public class Invalid<T> implements Validity<T> {
 		return false;
 	}
 	
-	public String getInvalidValue() {
+	public String getInvalid() {
 		return errorValue;
 	}
 

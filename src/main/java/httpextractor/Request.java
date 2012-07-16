@@ -1,7 +1,7 @@
 package httpextractor;
 
-import httpextractor.extractors.Optional;
 import httpextractor.extractors.RequestExtractor;
+import httpextractor.extractors.result.Optional;
 import httpextractor.matchers.RequestMatcher;
 
 import javax.servlet.http.HttpServletRequest;

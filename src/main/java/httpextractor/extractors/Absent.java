@@ -1,5 +1,8 @@
 package httpextractor.extractors;
 
+import httpextractor.extractors.result.Optional;
+import httpextractor.extractors.result.Validity;
+
 import com.google.common.base.Function;
 
 public class Absent implements Optional<Object>, Validity<Object> {
