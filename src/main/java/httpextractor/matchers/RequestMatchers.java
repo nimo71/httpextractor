@@ -1,4 +1,4 @@
-package matchers;
+package httpextractor.matchers;
 
 import httpextractor.Request;
 

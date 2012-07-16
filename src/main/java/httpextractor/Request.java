@@ -2,10 +2,10 @@ package httpextractor;
 
 import httpextractor.extractors.Optional;
 import httpextractor.extractors.RequestExtractor;
+import httpextractor.matchers.RequestMatcher;
 
 import javax.servlet.http.HttpServletRequest;
 
-import matchers.RequestMatcher;
 
 public class Request {
 	public HttpServletRequest servletRequest;

@@ -2,9 +2,9 @@ package httpextractor.routes;
 
 import com.google.common.base.Optional;
 
-import matchers.RequestMatcher;
 import httpextractor.Request;
 import httpextractor.handlers.RequestHandler;
+import httpextractor.matchers.RequestMatcher;
 
 public interface Router
 {

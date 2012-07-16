@@ -2,7 +2,7 @@ package httpextractor.routes;
 
 import httpextractor.Request;
 import httpextractor.handlers.RequestHandler;
-import matchers.RequestMatcher;
+import httpextractor.matchers.RequestMatcher;
 
 public class Route {
 	private final RequestHandler handler; 
