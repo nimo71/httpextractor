@@ -1,7 +1,7 @@
 package httpextractor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.*;
 
 import java.io.IOException;
 
@@ -21,6 +21,11 @@ public class LoginIT {
 				.asString();
 		
 		assertThat(indexPage, containsString("<span class=\"error\">Invalid Email</span>"));
+	}
+	@Test
+	public void indexPageDoesNotShowErrors() throws ClientProtocolException, IOException {
+		String indexPage = Request.Get("http://localhost:8080/index").execute().returnContent().asString();		
+		assertThat(indexPage, not(containsString("<span class=\"error\">Invalid Email</span>")));
 	}
 
 }
