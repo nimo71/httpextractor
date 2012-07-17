@@ -12,11 +12,11 @@ public abstract class Extractor<T> implements RequestValidityExtractor<T> {
 	}
 	
 	@Override
-	public Validity<T> extract(Request req) {
+	public final Validity<T> extract(Request req) {
 		Optional<String> value = RequestExtractors.param(parameterName, req);
 	
 		if (!value.isPresent())
-			return (Validity<T>) ResultFactory.<T> absent();
+			return (Validity<T>) ResultFactory.<T>absent();
 	
 		if (isValid(value.get()))
 			return ResultFactory.<T> valid(parse(value.get()));
