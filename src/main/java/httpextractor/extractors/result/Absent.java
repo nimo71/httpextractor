@@ -1,26 +1,29 @@
 package httpextractor.extractors.result;
 
 
-public class Absent implements Optional<Object>, Validity<Object> {
+public class Absent implements Validity<Object>, Optional<Object> {
 
 	public static final Optional<Object> INSTANCE = new Absent();
 
 	private Absent() {}
 
+	@Override
 	public boolean isPresent() {
 		return false;
 	}
 
+	@Override
 	public Object get() {
 		throw new IllegalStateException("Cannot get an absent object");
 	}
 
+	@Override
 	public boolean isValid() {
-		return false;
+		return true;
 	}
 
-	public String getInvalid() {
-		throw new IllegalStateException("An absent object has no validity");
+	@Override
+	public String toString() {
+		return "";
 	}
-
 }

@@ -19,7 +19,7 @@ public class ResultFactory {
 		return (Validity<T>) Absent.INSTANCE;
 	}
 
-	public static <T> Validity<T> valid(T valid) {
-		return new Valid<T>(valid);
+	public static <T> Validity<T> valid(T validValue) {
+		return new Valid<T>(validValue);
 	}
 }

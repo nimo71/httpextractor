@@ -10,16 +10,18 @@ public class Present<T> implements Optional<T> {
 		this.value = value;
 	}
 
+	@Override
 	public boolean isPresent() {
 		return true;
 	}
 
+	@Override
 	public T get() {
 		return value;
 	}
 
-	public Optional<T> absent() {
-		throw new IllegalStateException("Present values are not absent");
+	@Override
+	public String toString() {
+		return value.toString();
 	}
-
 }

@@ -50,6 +50,6 @@ public class EmailExtractorTest {
 		Validity<Email> email = RequestExtractors.emailParam(PARAMETER_NAME, req);
 		assertTrue(email.isPresent());
 		assertFalse(email.isValid());
-		assertThat(email.getInvalid(), equalTo("namedomaincom"));
+		assertThat(email.toString(), equalTo("namedomaincom"));
 	}
 }

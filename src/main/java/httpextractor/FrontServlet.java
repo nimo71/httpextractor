@@ -6,7 +6,7 @@ import httpextractor.routes.*;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.http.*;
 
 import org.apache.commons.logging.*;
@@ -20,7 +20,7 @@ public class FrontServlet extends HttpServlet
 	private Router router; 
 	
 	@Override
-	public void init(javax.servlet.ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) throws ServletException {
 		if (log.isInfoEnabled()) log.info("init()");
 		String routesClassName = config.getInitParameter("routes");
 		router = RouteFactory.loadRoutes(routesClassName); 
