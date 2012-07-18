@@ -2,7 +2,9 @@ package httpextractor.extractors;
 
 import httpextractor.domain.Password;
 
-public class PasswordExtractor extends Extractor<Password> implements RequestValidityExtractor<Password> {
+public class PasswordExtractor 
+	extends Extractor<Password> 
+	implements RequestValidityExtractor<Password> {
 
 	public PasswordExtractor(String paramName) {
 		super(paramName);

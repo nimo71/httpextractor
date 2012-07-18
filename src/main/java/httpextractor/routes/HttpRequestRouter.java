@@ -1,7 +1,6 @@
 package httpextractor.routes;
 
-import httpextractor.Request;
-import httpextractor.extractors.result.*;
+import httpextractor.*;
 import httpextractor.handlers.RequestHandler;
 import httpextractor.matchers.RequestMatcher;
 
@@ -9,22 +8,30 @@ import java.util.*;
 
 public class HttpRequestRouter implements Router {
 
-	private List<Route> routes = new ArrayList<Route>(); 
+	public static final RequestHandler UNKNOWN_ROUTE_HANDLER = new RequestHandler() {
+		@Override public Response handle(Request req) {
+			return new NotFoundResponse();
+		}
+	};
+
+	private final List<Route> routes = new ArrayList<Route>(); 
 	
 	public HttpRequestRouter(Routes routes) {
 		routes.declare(this);
 	}
 
+	@Override
 	public Router bind(RequestHandler handler, RequestMatcher... matchers) {
 		routes.add(new Route(handler, matchers));
 		return this;
 	}
 	
-	public Optional<RequestHandler> route(Request req) {
+	@Override
+	public RequestHandler route(Request req) {
 		for (Route route : routes) {
-			if (route.match(req)) return ResultFactory.present(route.handler());
+			if (route.match(req)) return route.handler();
 		}
-		return ResultFactory.<RequestHandler>absent();
+		return UNKNOWN_ROUTE_HANDLER;
 	}
 
 }

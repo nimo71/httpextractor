@@ -2,7 +2,7 @@ package httpextractor;
 
 public interface Response {
 	
-	public String body();
+	public String contentType();
 
-	public String contentType(); 
+	void apply(Responder responder); 
 }

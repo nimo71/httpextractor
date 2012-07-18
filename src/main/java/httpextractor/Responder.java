@@ -13,15 +13,28 @@ public class Responder {
 		this.servletResponse = res;
 		writer = this.servletResponse.getWriter();
 	}
-
-	public void success(Response response) {
+	
+	public void body(String content) {
 		servletResponse.setStatus(HttpServletResponse.SC_OK);
-		this.servletResponse.setContentType(response.contentType());
-		writer.print(response.body());
+		writer.print(content);
 	}
 
+	public void redirect(String toUrl) {
+		try {
+			servletResponse.sendRedirect(toUrl);
+		} 
+		catch (IOException e) {
+			throw new ResponseException("Problem redirecting to " + toUrl, e);
+		}
+	} 
+	
 	public void notFound() {
 		servletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	}
+
+	public void apply(Response response) {
+		this.servletResponse.setContentType(response.contentType());
+		response.apply(this);
 	}
 
 }
