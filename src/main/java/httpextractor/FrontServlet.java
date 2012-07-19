@@ -21,7 +21,9 @@ public class FrontServlet extends HttpServlet
 	}
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException 
+	{
 		Request request = new Request(req);
 		Responder responder = new Responder(res);
 		
